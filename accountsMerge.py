@@ -22,7 +22,7 @@ class UnionFind:
             self.par[root1] = root2
         else:
             self.par[root2] = root1
-            self.rank[root1] += 1
+            self.rank[root1] += self.rank[root2] #1
         
         return True
 
