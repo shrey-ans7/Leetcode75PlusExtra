@@ -31,37 +31,30 @@ class UnionFind:
             self.par[n] = n
             self.rank[n] = 0
 
-
-class Node:
-    def __init__(self,details):
-        self.name=details[0]
-        self.emails=set(details)
-        self.emails.remove(self.name)
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         tracker={}
         unionFind = UnionFind()
-        for acc in accounts:
-            node=Node(acc)
-            unionFind.add(node)
-            for email in node.emails:
+        for i,acc in enumerate(accounts):
+            unionFind.add(i)
+            for email in acc[1:]:
                 if email in tracker:
-                    unionFind.union(tracker[email],node)
+                    unionFind.union(tracker[email],i)
                 else:
-                    tracker[email]=node
+                    tracker[email]=i
 
         # Merge emails
         email_to_node = {}
-        for email, node in tracker.items():
-            root = unionFind.find(node)
+        for email, index in tracker.items():
+            root = unionFind.find(index)
             if root not in email_to_node:
                 email_to_node[root] = set()
             email_to_node[root].add(email)
         
         # Build result
         res = []
-        for node, emails in email_to_node.items():
-            res.append([node.name] + sorted(list(emails)))
+        for index, emails in email_to_node.items():
+            res.append([accounts[index][0]] + sorted(list(emails)))
         
         return res
 
