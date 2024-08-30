@@ -7,7 +7,8 @@ class Solution:
                 return dp[(i,currProd)]
             ans=currProd
             if i+1<size:
-                ans=max(ans,dfs(i+1,currProd*nums[i+1]))
+                if currProd!=0:
+                    ans=max(ans,dfs(i+1,currProd*nums[i+1]))
                 ans=max(ans,dfs(i+1,nums[i+1]))
             dp[(i,currProd)]=ans
             return ans
