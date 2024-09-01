@@ -29,7 +29,7 @@ class UnionFind:
     def add(self, n):
         if n not in self.par:
             self.par[n] = n
-            self.rank[n] = 0
+            self.rank[n] = 1 #0
 
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
