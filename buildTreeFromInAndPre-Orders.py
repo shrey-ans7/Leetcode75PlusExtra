@@ -11,8 +11,6 @@ class Solution:
         val_to_idx = {val:idx for idx,val in enumerate(inorder)}
         size=len(preorder)
         def dfs(preIndex, inStart, inEnd):
-            if not inorder or not preorder:
-                return None
             if inStart>inEnd:
                 return None
             node=TreeNode(preorder[preIndex])
