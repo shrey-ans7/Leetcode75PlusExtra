@@ -1,3 +1,27 @@
+#1. DFS Solution
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        size=len(nums)
+        res=set()
+        stack=[]
+        def dfs(i,stack):
+            nonlocal res
+            if i>=size:
+                res.add(tuple(stack.copy()))
+                return
+            #1. Skip
+            res.add(tuple(stack.copy()))
+            dfs(i+1,stack)
+            #2.Take
+            stack.append(nums[i])
+            dfs(i+1,stack)
+            stack.pop()
+            return
+        dfs(0,stack)
+        return list(res)
+
+        
+#2. OG Solution
 class Solution:
     def buildTree(self, nums):
         low=0
