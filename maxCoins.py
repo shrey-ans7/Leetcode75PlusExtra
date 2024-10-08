@@ -26,9 +26,8 @@ class Solution:
         dp = {}
         def dfs(i,nums):
             nums_str = str(nums)
-            if (i,nums_str) in dp:
-                return dp[(i,nums_str)]
-
+            if nums_str in dp:
+                return dp[nums_str]
             if i>len(nums):
                 return 0
             res=1
@@ -38,10 +37,10 @@ class Solution:
             next=0
             for k in range(len(nums)):
                 next=max(next,dfs(k,nums))
+            dp[str(nums)]=next
             nums.insert(i,value)
-            dp[(i,nums_str)]=res+next
             return res+next
         res=0
         for i in range(len(nums)):
             res=max(res,dfs(i,nums))
-        return res     
+        return res          
