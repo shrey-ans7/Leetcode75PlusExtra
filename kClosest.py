@@ -1,3 +1,9 @@
+#Solution 1
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        points.sort(key = lambda cood:cood[0]**2+cood[1]**2)
+        return points[:k]
+#Solution 2        
 class Point:
     def __init__(self,dist,cood):
         self.dist=dist
