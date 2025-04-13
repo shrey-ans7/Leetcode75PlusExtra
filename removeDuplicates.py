@@ -1,4 +1,18 @@
-#1. Optimal Soln
+# 1. Even more optimal soln
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        size=len(nums)
+        act=0
+        for i in range(size):
+            if nums[i]!=nums[act]:
+                act+=1
+                nums[act]=nums[i]
+            
+        return act+1
+                
+        
+
+#2. Optimal Soln
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         prev=nums[0]-1
@@ -16,7 +30,7 @@ class Solution:
                 i+=1
         return count
 
-#2. First Soln
+#3. First Soln
 from collections import deque
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
