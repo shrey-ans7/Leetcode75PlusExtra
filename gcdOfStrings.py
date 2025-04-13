@@ -5,9 +5,9 @@ class Solution:
             return ""
 
         def gcd(len1, len2):
-            len2, len1 = max(len1,len2), min(len1,len2)
+            len1, len2 = max(len1,len2), min(len1,len2)
             while len2:
                 len1, len2 = len2, len1 % len2
             return len1
 
-        return str1[:gcd(len(str1), len(str2))]
+        return str2[:gcd(len(str1), len(str2))]
