@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
+    def pathSumII(self, root: Optional[TreeNode], targetSum: int) -> List[List[int]]:
         # if not root:
         #     return []
         # elif not root.left and not root.right:
