@@ -1,5 +1,21 @@
-#1. Optimal Soln:
-#TODO
+#1. O(n) Space and O(n^2) Time Soln:
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        size=len(nums)
+        dp=[-1 for _ in range(size)] 
+        def dfs(i):
+            if i==size:
+                return 0
+            if dp[i]!=-1:
+                return dp[i]
+            lis=1
+            for j in range(i+1,size):
+                if nums[i]<nums[j]:
+                    lis=max(lis,1+dfs(j))
+            dp[i]=lis
+            return lis
+        return max(dfs(i) for i in range(size))
+        
 
 #2. Accepted O(n^2) Memory and O(n^2) Time Soln:
 class Solution:
@@ -23,7 +39,7 @@ class Solution:
             
         return dfs(0,size)
         
-#3. Least Efficient Soln:
+#3. Least Efficient Soln using HashMap:
 from typing import List, Dict
 import sys
 
