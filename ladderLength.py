@@ -12,6 +12,7 @@ class Solution:
             return 0
         queue1.append(beginWord)
         visited=set()
+        visited.add(beginWord)
         while(queue1):
             curr=queue1.popleft()
             if curr==endWord:
