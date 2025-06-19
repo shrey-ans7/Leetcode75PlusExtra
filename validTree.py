@@ -1,41 +1,26 @@
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        visited = set()
-        graph = {}
+        graph={}
         for edge in edges:
-            if edge[0]==edge[1]:
+            graph[edge[0]]=graph.get(edge[0],[])+[edge[1]]
+            graph[edge[1]]=graph.get(edge[1],[])+[edge[0]]
+        path=set()
+        count=0
+        def dfs(node, prev):
+            if node in path:
                 return False
-            if edge[0] in graph.keys():
-                graph[edge[0]].append(edge[1])
-            else:
-                graph[edge[0]]=[edge[1]]
-            if edge[1] in graph.keys():
-                graph[edge[1]].append(edge[0])
-            else:
-                graph[edge[1]]=[edge[0]]
-        if n<=1:
-            return True
-        def dfs(node,prev):
-            nonlocal visited
-            visited.add(node)
-            flag=True
-            for i in graph[node]:
-                if i==prev:
+            nonlocal count
+            count+=1
+            path.add(node)
+            for ngh in graph.get(node,[]):
+                if ngh==prev:
                     continue
-                elif i in visited:
-                    flag = False
-                    return flag
-                flag = flag and dfs(i,node)
-                if not flag:
-                    return flag
-            return flag
-        flag=dfs(0,n)
-        print(visited)
-        if len(visited)==n:
-            return flag
-        else:
-            return False
+                if not dfs(ngh,node):
+                    return False
+            path.remove(node)
+            return True
+        return dfs(0,n) and count==n
 
-            
-        
-        
+
+
+       
