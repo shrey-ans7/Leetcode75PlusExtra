@@ -1,3 +1,22 @@
+#New Soln
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        count1=0
+        count2=0
+        for interval in intervals:
+            if interval[1]<newInterval[0]:
+                count1+=1
+            elif interval[0]>newInterval[1]:
+                return intervals[:count1]+[newInterval]+intervals[count1+count2:]
+            else:
+                count2+=1
+                newInterval[0]=min(interval[0],newInterval[0])
+                newInterval[1]=max(interval[1],newInterval[1])
+        return intervals[:count1]+[newInterval]+intervals[count1+count2:]
+
+        
+
+#Old Soln
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         size=len(intervals)
