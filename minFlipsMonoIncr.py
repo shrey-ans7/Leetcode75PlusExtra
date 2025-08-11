@@ -1,3 +1,15 @@
+#1. Soln 1
+class Solution:
+    def minFlipsMonoIncr(self, s: str) -> int:
+        res=0
+        ones_count=0
+        for bit in s:
+            if bit=="0":
+                res=min(res+1,ones_count)
+            else:
+                ones_count+=1
+        return res
+#2. Soln 2
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:
         dp={}
