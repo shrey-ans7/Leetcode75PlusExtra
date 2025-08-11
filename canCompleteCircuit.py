@@ -1,3 +1,23 @@
+#Soln 1:
+
+class Solution:
+    def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        total=0
+        index=-1
+        balance=0
+        i=0
+        size=len(gas)
+        for fuel, price in zip(gas,cost):
+            diff=fuel-price
+            total+=diff
+            balance+=diff
+            if total<0:
+                index=i+1
+                total=0
+            i+=1
+        index=max(index,0)
+        return index if balance>=0 else -1
+#Soln 2:
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         last = len(gas)-1
