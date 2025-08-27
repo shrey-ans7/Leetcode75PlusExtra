@@ -1,3 +1,4 @@
+#Soln 1
 class Solution:
     def findMinArrowShots(self, points: List[List[int]]) -> int:
         points.sort(key=lambda point:point[0])
@@ -12,4 +13,18 @@ class Solution:
                 count+=1
                 prev=points[i][1]
         return count
+#Soln 2       
+class Solution:
+    def findMinArrowShots(self, points: List[List[int]]) -> int:
+        points.sort(key=lambda point:tuple(point))
+        curr=points[0]
+        count=1
+        for point in points[1:]:
+            if point[0]>curr[1]:
+                count+=1
+                curr=point
+            else:
+                curr[1]=min(curr[1],point[1])
+        return count
+
         
