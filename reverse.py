@@ -16,7 +16,6 @@ class Solution:
         return -seed if is_neg else seed
         
 #Soln 2:
-
 class Solution:
     INT_MIN, INT_MAX = -2**31, 2**31 - 1
     def reverse(self, x: int) -> int:
