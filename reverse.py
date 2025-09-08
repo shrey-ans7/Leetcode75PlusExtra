@@ -7,7 +7,6 @@ class Solution:
         if is_neg:
             x*=-1
         seed=0
-        count=0
         while x:
             seed*=10
             seed+=x%10
